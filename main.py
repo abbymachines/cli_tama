@@ -1,5 +1,6 @@
 import time
 import random
+import threading
 from tama import Tama
 from inputimeout import inputimeout, TimeoutOccurred
 
