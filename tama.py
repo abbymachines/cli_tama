@@ -1,3 +1,5 @@
+import time
+
 class Tama():
 
   def __init__(self, health=0, is_alive=True, name="", body="🥚"):
@@ -23,9 +25,9 @@ class Tama():
 
   def print_health(self, additional_message=""):
     if self.health == -1:
-      print(f"{self.body} {self.heart_icons[0]}  oh no")
+      print(f"{self.body} {self.heart_icons[0]}  oh no {time.asctime()}")
     else:
-      print(f"{self.body}  {self.heart_icons[self.health]} {additional_message}")
+      print(f"{self.body}  {self.heart_icons[self.health]} {additional_message} {time.asctime()}" )
 
   def set_name(self):
     self.name = input("Set name: ")

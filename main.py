@@ -4,6 +4,9 @@ import threading
 from tama import Tama
 from inputimeout import inputimeout, TimeoutOccurred
 
+# t1 = threading.Thread(target, args)
+# t2 = threading.Thread(target, args)
+
 pet = Tama(health=0)
 pet.set_body()
 pet.set_name()
