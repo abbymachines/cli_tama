@@ -25,9 +25,9 @@ class Tama():
 
   def print_health(self, additional_message=""):
     if self.health == -1:
-      print(f"{self.body} {self.heart_icons[0]}  oh no {time.asctime()}")
+      print(f"{self.body} {self.heart_icons[0]}  oh no")
     else:
-      print(f"{self.body}  {self.heart_icons[self.health]} {additional_message} {time.asctime()}" )
+      print(f"{self.body}  {self.heart_icons[self.health]} {additional_message}" )
 
   def set_name(self):
     self.name = input("Set name: ")

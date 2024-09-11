@@ -8,8 +8,13 @@ pet = Tama(health=0)
 pet.set_body()
 pet.set_name()
 
-def example_for_multithreading(num):
-  print(f"look at me! i love to process multiple threads simultaneously. yep {num}")
+def clock():
+  # print(f"look at me! i love to process multiple threads simultaneously. yep {num}")
+  # run_clock = True
+  
+  while True:
+    time.sleep(1)
+    print(f"{time.asctime()}")
 
 def wait_for_input():
   try:
@@ -29,7 +34,8 @@ def pet_lifecycle():
 
 if __name__=="__main__":
   t1 = threading.Thread(target=pet_lifecycle)
-  t2 = threading.Thread(target=example_for_multithreading, args=([10]))
+  # t2 = threading.Thread(target=example_for_multithreading, args=([10]))
+  t2 = threading.Thread(target=clock)
   
   t1.start()
   # t1.join()
