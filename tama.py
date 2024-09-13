@@ -1,4 +1,5 @@
 import time
+import sys
 
 class Tama():
 
@@ -25,9 +26,17 @@ class Tama():
 
   def print_health(self, additional_message=""):
     if self.health == -1:
-      print(f"{self.body} {self.heart_icons[0]}  oh no")
+      # print(f"\r {self.body} {self.heart_icons[0]}  oh no")
+      # sys.stdout.write(f"{self.body} {self.heart_icons[0]} oh no")
+      # sys.stdout.flush()
+      # print("", end="\r")
+      print(f"\r {self.body} {self.heart_icons[0]}  oh no", end="\r")
     else:
-      print(f"{self.body}  {self.heart_icons[self.health]} {additional_message}" )
+      # print("", end="\r")
+      print(f"{self.body}  {self.heart_icons[self.health]} {additional_message}", end="\r")
+      # sys.stdout.flush()
+      # sys.stdout.write(f"{self.body} {self.heart_icons[self.health]} {additional_message}")
+      # sys.stdout.flush()
 
   def set_name(self):
     self.name = input("Set name: ")

@@ -3,22 +3,25 @@ import random
 import threading
 from tama import Tama
 from inputimeout import inputimeout, TimeoutOccurred
+# import sys
 
-pet = Tama(health=0)
-pet.set_body()
-pet.set_name()
+# pet = Tama(health=0)
+# pet.set_body()
+# pet.set_name()
+LINE_CLEAR = '\x1b[2K'
+LINE_UP = '\033[1A'
 
 def clock():
-  # print(f"look at me! i love to process multiple threads simultaneously. yep {num}")
-  # run_clock = True
-  
   while True:
     time.sleep(1)
+    print(LINE_UP, end=LINE_CLEAR)
+    print("🐛 ❤️❤️ i'm pretending to be a worm!")
     print(f"{time.asctime()}")
+    print(LINE_UP, end=LINE_CLEAR)
 
 def wait_for_input():
   try:
-      something = inputimeout(prompt='press any key to feed', timeout=5)
+      something = inputimeout(prompt='', timeout=5)
       if something:
         pet.feed()
   except TimeoutOccurred:
@@ -33,15 +36,15 @@ def pet_lifecycle():
       pet.is_alive = False
 
 if __name__=="__main__":
-  t1 = threading.Thread(target=pet_lifecycle)
+  # t1 = threading.Thread(target=pet_lifecycle)
   # t2 = threading.Thread(target=example_for_multithreading, args=([10]))
   t2 = threading.Thread(target=clock)
   
-  t1.start()
+  # t1.start()
   # t1.join()
   t2.start()
   
-  t1.join()
+  # t1.join()
   t2.join()
   
   print("Done!")
