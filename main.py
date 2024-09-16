@@ -2,7 +2,7 @@ import time
 import random
 import threading
 from tama import Tama
-# from inputimeout import inputimeout, TimeoutOccurred
+from inputimeout import inputimeout, TimeoutOccurred
 # import sys
 
 pet = Tama(health=0)
@@ -40,7 +40,7 @@ def clock():
       counter = 0
     
     # print(LINE_UP, end=LINE_CLEAR)
-    print(f"{dummy_pet(counter)} \n {time.asctime()} \n isn't that neat? :) \n BOO!")
+    print(f"{pet.format_output()} \n {time.asctime()} \n isn't that neat? :) \n BOO!")
     clear_display(lines=4)
 
 def wait_for_input():
@@ -60,11 +60,11 @@ def pet_lifecycle():
       pet.is_alive = False
 
 if __name__=="__main__":
-  # t1 = threading.Thread(target=pet_lifecycle)
+  t1 = threading.Thread(target=pet_lifecycle)
   # t2 = threading.Thread(target=example_for_multithreading, args=([10]))
   t2 = threading.Thread(target=clock)
   
-  # t1.start()
+  t1.start()
   # t1.join()
   t2.start()
   
