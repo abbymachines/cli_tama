@@ -27,11 +27,11 @@ class Tama():
           f"Invalid input. Choose from one of the following options: {self.pet_icons} "
       )
 
-  def terminal_output(pet_and_health, prompt="feed me pls"):
-    print(LINE_UP, end=LINE_CLEAR)
-    print(pet_and_health)
-    print(prompt)
-    print(LINE_UP, end=LINE_CLEAR)
+  # def terminal_output(pet_and_health, prompt="feed me pls"):
+  #   print(LINE_UP, end=LINE_CLEAR)
+  #   print(pet_and_health)
+  #   print(prompt)
+  #   print(LINE_UP, end=LINE_CLEAR)
 
   def format_output(self, additional_message=""):
     if self.health == -1:
@@ -45,14 +45,14 @@ class Tama():
   def feed(self):
     if self.health < 4:
       self.health += 1
-      output = self.format_output(f"{self.name} says 'Yum!'")
-      self.terminal_output(output)
-    else:
-      output = self.format_output(f"{self.name} is already full ^_^")
-      self.terminal_output(output)
+      # output = self.format_output(f"{self.name} says 'Yum!'")
+      # self.terminal_output(output)
+    # else:
+      # output = self.format_output(f"{self.name} is already full ^_^")
+      # self.terminal_output(output)
 
   def go_hungry(self):
     if self.health >= 0:
       self.health -= 1
-      output = self.format_output("*stomach gurgles*")
-      self.terminal_output(output)
+      # output = self.format_output("*stomach gurgles*")
+      # self.terminal_output(output)

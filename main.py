@@ -48,8 +48,10 @@ def wait_for_input():
       something = inputimeout(prompt='', timeout=5)
       if something:
         pet.feed()
+        clear_display(lines=1)
   except TimeoutOccurred:
       pet.go_hungry()
+      clear_display(lines=1)
 
 def pet_lifecycle():
   while pet.is_alive:
