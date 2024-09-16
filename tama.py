@@ -1,9 +1,12 @@
 import time
 import sys
+# from main import LINE_UP, LINE_CLEAR
+
+LINE_CLEAR = '\x1b[2K'
+LINE_UP = '\033[1A'
 
 class Tama():
-
-  def __init__(self, health=0, is_alive=True, name="", body="🥚"):
+  def __init__(self, health=4, is_alive=True, name="", body="🥚"):
     self.health = health
     self.is_alive = is_alive
     self.name = name
@@ -24,19 +27,17 @@ class Tama():
           f"Invalid input. Choose from one of the following options: {self.pet_icons} "
       )
 
-  def print_health(self, additional_message=""):
+  def terminal_output(pet_and_health, prompt="feed me pls"):
+    print(LINE_UP, end=LINE_CLEAR)
+    print(pet_and_health)
+    print(prompt)
+    print(LINE_UP, end=LINE_CLEAR)
+
+  def format_output(self, additional_message=""):
     if self.health == -1:
-      # print(f"\r {self.body} {self.heart_icons[0]}  oh no")
-      # sys.stdout.write(f"{self.body} {self.heart_icons[0]} oh no")
-      # sys.stdout.flush()
-      # print("", end="\r")
-      print(f"\r {self.body} {self.heart_icons[0]}  oh no", end="\r")
+      return f"\r {self.body} {self.heart_icons[0]}  oh no"
     else:
-      # print("", end="\r")
-      print(f"{self.body}  {self.heart_icons[self.health]} {additional_message}", end="\r")
-      # sys.stdout.flush()
-      # sys.stdout.write(f"{self.body} {self.heart_icons[self.health]} {additional_message}")
-      # sys.stdout.flush()
+      return f"{self.body}  {self.heart_icons[self.health]} {additional_message}"
 
   def set_name(self):
     self.name = input("Set name: ")
@@ -44,11 +45,14 @@ class Tama():
   def feed(self):
     if self.health < 4:
       self.health += 1
-      self.print_health(f"{self.name} says 'Yum!'")
+      output = self.format_output(f"{self.name} says 'Yum!'")
+      self.terminal_output(output)
     else:
-      self.print_health(f"{self.name} is already full ^_^")
+      output = self.format_output(f"{self.name} is already full ^_^")
+      self.terminal_output(output)
 
   def go_hungry(self):
     if self.health >= 0:
       self.health -= 1
-      self.print_health("*stomach gurgles*")
+      output = self.format_output("*stomach gurgles*")
+      self.terminal_output(output)
