@@ -29,19 +29,13 @@ def clear_display(lines):
     print(LINE_UP, end=LINE_CLEAR)
 
 def clock():
-  counter = 0
+  # counter = 0
   
   while True:
     time.sleep(1)
     
-    if counter < 4:
-      counter += 1
-    else:
-      counter = 0
-    
-    # print(LINE_UP, end=LINE_CLEAR)
-    print(f"{pet.format_output()} \n {time.asctime()} \n isn't that neat? :) \n BOO!")
-    clear_display(lines=4)
+    print(f"{pet.format_output()} \n {time.asctime()}")
+    clear_display(lines=2)
 
 def wait_for_input():
   try:
@@ -63,16 +57,11 @@ def pet_lifecycle():
 
 if __name__=="__main__":
   t1 = threading.Thread(target=pet_lifecycle)
-  # t2 = threading.Thread(target=example_for_multithreading, args=([10]))
   t2 = threading.Thread(target=clock)
   
   t1.start()
-  # t1.join()
   t2.start()
   
-  # t1.join()
   t2.join()
   
   print("Done!")
-
-# pet_lifecycle()
